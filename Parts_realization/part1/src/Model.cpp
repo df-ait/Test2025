@@ -29,7 +29,6 @@ Matrix Model::Relu(Matrix &A)
 }
 
 Matrix Model::Softmax(Matrix& A){
-    std::vector<std::vector<float>>res(1 , std::vector<float>(1,0));
     double E;
     //先计算出分母，
     for(auto i = 0 ; i< A.line ; i++){
@@ -44,4 +43,5 @@ Matrix Model::Softmax(Matrix& A){
             A.matrix[i][j] = calcul;
         }
     }
+    return A;
 }
