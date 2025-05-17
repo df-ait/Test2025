@@ -1,6 +1,7 @@
 #include "../head/Model.h"
 #include "../head/Matrix.h"
 #include <bits/stdc++.h>
+#include "../../../json.hpp"
 
 template<class T>
 auto Model<T>::forward(Matrix<T>& introduc_M)
@@ -49,4 +50,11 @@ Matrix<T> Model<T>::Softmax(Matrix<T>& A){
         }
     }
     return A;
+}
+std::shared_ptr<Base_Model> Base_Model::scan_files(const std::string &filename)
+{
+    nlohmann::json j;
+    std::ifstream fin(filename+"/meta.json");
+    j = nlohmann::json::parse(fin);
+    return std::shared_ptr<Base_Model>();
 }
