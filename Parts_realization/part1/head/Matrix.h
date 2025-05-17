@@ -1,9 +1,9 @@
 #pragma once
 #include <bits/stdc++.h>
 
+template<class T>
 class Matrix{
  private:
-    
     //判断矩阵a,b是否可以满足*this x other(内标相等才可相乘)
     bool is_multipy(Matrix& other){
         int line_other = other.line , line_this = this->line;
@@ -23,13 +23,13 @@ class Matrix{
  public:
     int line;
     int column;
-    std::vector<std::vector<float>>matrix;
-    Matrix(std::vector<std::vector<float>>&a):matrix(a),line(a.size()),column(a[0].size()){}
+    std::vector<std::vector<T>>matrix;
+    Matrix(std::vector<std::vector<T>>&a):matrix(a),line(a.size()),column(a[0].size()){}
     Matrix(int a , int b):line(a) , column(b){
-        matrix.resize(a , std::vector<float>(b,0.0));
+        matrix.resize(a , std::vector<T>(b,0));
     }
     // //矩阵相乘函数
-    Matrix matrix_multipy(Matrix& other);
+    Matrix<T> matrix_multipy(Matrix<T>& other);
     // //矩阵相加函数
-    Matrix matrix_add(Matrix& other);
+    Matrix<T> matrix_add(Matrix<T>& other);
 };

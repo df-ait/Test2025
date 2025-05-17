@@ -2,7 +2,8 @@
 #include "../head/Matrix.h"
 #include <bits/stdc++.h>
 
-auto Model::forward(Matrix& introduc_M)
+template<class T>
+auto Model<T>::forward(Matrix<T>& introduc_M)
 {
     //先将矩阵和weight_1做矩阵乘法，得到长宽为1 * 500的临时矩阵
     Matrix index_1 = introduc_M.matrix_multipy(weight_1);
@@ -18,7 +19,9 @@ auto Model::forward(Matrix& introduc_M)
 
 }
 
-Matrix Model::Relu(Matrix &A)
+
+template<class T>
+Matrix<T> Model<T>::Relu(Matrix<T>& A)
 {
     for(auto i = 0 ; i< A.line ; i++){
         for(auto j = 0 ; j< A.column ; j++){
@@ -28,7 +31,9 @@ Matrix Model::Relu(Matrix &A)
     return A;
 }
 
-Matrix Model::Softmax(Matrix& A){
+
+template<class T>
+Matrix<T> Model<T>::Softmax(Matrix<T>& A){
     double E;
     //先计算出分母，
     for(auto i = 0 ; i< A.line ; i++){

@@ -3,17 +3,18 @@
 #include "../part1/head/Model.h"
 #include "json.hpp"
 
-Matrix read_matrix(const std::string& filename , int line , int column){
+template<class T>
+Matrix<T> read_matrix(const std::string& filename , int line , int column){
     std::ifstream file(filename , std::ios::binary | std::ios::in);
     if(!file.is_open()){
         std::cerr<<"Failed to open the* "<<filename<<" *file\n\n";
-        return Matrix(0,0);
+        return Matrix<T>(0,0);
     }
-    Matrix index(line , column);
+    Matrix<T> index(line , column);
     while(!file.eof()){
         for(auto i = 0 ; i<line ; i++){
             for(auto j = 0 ; j<column ; j++){
-                file.read((char*)&index.matrix[i][j] , sizeof(float));
+                file.read((char*)&index.matrix[i][j] , sizeof(T));
             }
         }
     }
@@ -21,7 +22,8 @@ Matrix read_matrix(const std::string& filename , int line , int column){
     return index;
 }
 
-void test_push(Matrix& index){
+template<class T>
+void test_push(Matrix<T>& index){
     for(auto i = 0 ; i<index.line ; i++){
             for(auto j = 0 ; j<index.column; j++){
                 std::cout<<index.matrix[i][j]<<" ";
@@ -36,19 +38,19 @@ int main(){
     std::ifstream fin("D:/Test2025/mnist-fc/meta.json");
     j = nlohmann::json::parse(fin);
     
-    Matrix w1 = read_matrix("D:/Test2025/mnist-fc/fc1.weight" , j["fc1.weight"][0] , j["fc1.weight"][1]);
+    Matrix<float> w1 = read_matrix<float>("D:/Test2025/mnist-fc/fc1.weight" , j["fc1.weight"][0] , j["fc1.weight"][1]);
     std::cout<<"w1:\n";
     test_push(w1);
 
-    Matrix b1 = read_matrix("D:/Test2025/mnist-fc/fc1.bias" , j["fc1.bias"][0] , j["fc1.bias"][1]);
+    Matrix<float> b1 = read_matrix<float>("D:/Test2025/mnist-fc/fc1.bias" , j["fc1.bias"][0] , j["fc1.bias"][1]);
     std::cout<<"b1:\n";
     test_push(b1);
 
-    Matrix w2 = read_matrix("D:/Test2025/mnist-fc/fc2.weight" , j["fc2.weight"][0] , j["fc2.weight"][1]);
+    Matrix<float> w2 = read_matrix<float>("D:/Test2025/mnist-fc/fc2.weight" , j["fc2.weight"][0] , j["fc2.weight"][1]);
     std::cout<<"w2:\n";
     test_push(w2);
     
-    Matrix b2 = read_matrix("D:/Test2025/mnist-fc/fc2.bias" , j["fc2.bias"][0] , j["fc2.bias"][1]);
+    Matrix<float> b2 = read_matrix<float>("D:/Test2025/mnist-fc/fc2.bias" , j["fc2.bias"][0] , j["fc2.bias"][1]);
     std::cout<<"b2:\n";
     test_push(b2);
 

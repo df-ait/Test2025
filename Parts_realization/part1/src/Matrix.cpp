@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 #include "../head/Matrix.h"
-#include "../head/Matrix.h"
 
-Matrix Matrix::matrix_multipy(Matrix& other)
+template<class T>
+Matrix<T> Matrix<T>::matrix_multipy(Matrix<T>& other)
 {
     if(!is_multipy(other)) return other;//两矩阵无法相乘的情况
     int line_this = this->line;
@@ -22,8 +22,8 @@ Matrix Matrix::matrix_multipy(Matrix& other)
     return Matrix(res);
 }
 
-
-Matrix Matrix::matrix_add(Matrix& other)
+template<class T>
+Matrix<T> Matrix<T>::matrix_add(Matrix<T>& other)
 {
     if(!is_add(other)) return other;
     int line = other.line;
