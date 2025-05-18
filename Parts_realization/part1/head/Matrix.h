@@ -1,8 +1,13 @@
 #pragma once
 #include <bits/stdc++.h>
 
+class Matrix_Base{
+ public:
+    virtual ~Matrix_Base() = default;
+};
+
 template<class T>
-class Matrix{
+class Matrix : public Matrix_Base{
  private:
     //判断矩阵a,b是否可以满足*this x other(内标相等才可相乘)
     bool is_multipy(Matrix& other){

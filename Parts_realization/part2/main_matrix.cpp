@@ -23,7 +23,7 @@ Matrix<T> read_files(const std::string& filename , int line , int column){
 }
 
 template<class T>
-std::shared_ptr<Base_Model> read_folder(const std::string& folder , nlohmann::json& j){
+std::shared_ptr<Model<T>> read_folder(const std::string& folder , nlohmann::json& j){
     std::string w1_ = folder +"/fc1.weight";
     std::string b1_ = folder +"/fc1.bias";
     std::string w2_ = folder +"/fc2.weight";
@@ -85,8 +85,5 @@ int main(){
     else{
         std::cout<<"!Type was not detected\n\n";
     }
-    
-
-
     return 0;
 }
