@@ -1,0 +1,3 @@
+D:/Test2025/Parts_realization/build/CMakeFiles/Test2025.dir
+D:/Test2025/Parts_realization/build/CMakeFiles/edit_cache.dir
+D:/Test2025/Parts_realization/build/CMakeFiles/rebuild_cache.dir

@@ -15,7 +15,7 @@ Matrix<T> Matrix<T>::matrix_multipy(Matrix<T>& other)
     for(auto i = 0; i < line_this ; i++){//控制a的行数
         for(auto j = 0;j < column_other ;j++){//控制b的列数
             for(auto k = 0 ; k< common ; k++){//控制a的列数/b的行数
-                res[i][j] = this->matrix[i][k] * other.matrix[k][j];
+                res[i][j] += this->matrix[i][k] * other.matrix[k][j];
             }
         }
     }

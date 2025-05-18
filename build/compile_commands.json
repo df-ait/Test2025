@@ -1,0 +1,20 @@
+[
+{
+  "directory": "D:/Test2025/build",
+  "command": "D:\\ddddffff\\Mingw14.2.0\\mingw64\\bin\\g++.exe   -g -std=gnu++20 -o CMakeFiles\\Test2025.dir\\part1\\src\\Matrix.cpp.obj -c D:\\Test2025\\Parts_realization\\part1\\src\\Matrix.cpp",
+  "file": "D:/Test2025/Parts_realization/part1/src/Matrix.cpp",
+  "output": "CMakeFiles/Test2025.dir/part1/src/Matrix.cpp.obj"
+},
+{
+  "directory": "D:/Test2025/build",
+  "command": "D:\\ddddffff\\Mingw14.2.0\\mingw64\\bin\\g++.exe   -g -std=gnu++20 -o CMakeFiles\\Test2025.dir\\part1\\src\\Model.cpp.obj -c D:\\Test2025\\Parts_realization\\part1\\src\\Model.cpp",
+  "file": "D:/Test2025/Parts_realization/part1/src/Model.cpp",
+  "output": "CMakeFiles/Test2025.dir/part1/src/Model.cpp.obj"
+},
+{
+  "directory": "D:/Test2025/build",
+  "command": "D:\\ddddffff\\Mingw14.2.0\\mingw64\\bin\\g++.exe   -g -std=gnu++20 -o CMakeFiles\\Test2025.dir\\part2\\main_matrix.cpp.obj -c D:\\Test2025\\Parts_realization\\part2\\main_matrix.cpp",
+  "file": "D:/Test2025/Parts_realization/part2/main_matrix.cpp",
+  "output": "CMakeFiles/Test2025.dir/part2/main_matrix.cpp.obj"
+}
+]
