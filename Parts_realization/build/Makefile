@@ -128,54 +128,6 @@ Test2025/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test2025.dir\build.make CMakeFiles/Test2025.dir/build
 .PHONY : Test2025/fast
 
-part1/src/Matrix.obj: part1/src/Matrix.cpp.obj
-.PHONY : part1/src/Matrix.obj
-
-# target to build an object file
-part1/src/Matrix.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test2025.dir\build.make CMakeFiles/Test2025.dir/part1/src/Matrix.cpp.obj
-.PHONY : part1/src/Matrix.cpp.obj
-
-part1/src/Matrix.i: part1/src/Matrix.cpp.i
-.PHONY : part1/src/Matrix.i
-
-# target to preprocess a source file
-part1/src/Matrix.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test2025.dir\build.make CMakeFiles/Test2025.dir/part1/src/Matrix.cpp.i
-.PHONY : part1/src/Matrix.cpp.i
-
-part1/src/Matrix.s: part1/src/Matrix.cpp.s
-.PHONY : part1/src/Matrix.s
-
-# target to generate assembly for a file
-part1/src/Matrix.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test2025.dir\build.make CMakeFiles/Test2025.dir/part1/src/Matrix.cpp.s
-.PHONY : part1/src/Matrix.cpp.s
-
-part1/src/Model.obj: part1/src/Model.cpp.obj
-.PHONY : part1/src/Model.obj
-
-# target to build an object file
-part1/src/Model.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test2025.dir\build.make CMakeFiles/Test2025.dir/part1/src/Model.cpp.obj
-.PHONY : part1/src/Model.cpp.obj
-
-part1/src/Model.i: part1/src/Model.cpp.i
-.PHONY : part1/src/Model.i
-
-# target to preprocess a source file
-part1/src/Model.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test2025.dir\build.make CMakeFiles/Test2025.dir/part1/src/Model.cpp.i
-.PHONY : part1/src/Model.cpp.i
-
-part1/src/Model.s: part1/src/Model.cpp.s
-.PHONY : part1/src/Model.s
-
-# target to generate assembly for a file
-part1/src/Model.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test2025.dir\build.make CMakeFiles/Test2025.dir/part1/src/Model.cpp.s
-.PHONY : part1/src/Model.cpp.s
-
 part2/main_matrix.obj: part2/main_matrix.cpp.obj
 .PHONY : part2/main_matrix.obj
 
@@ -209,12 +161,6 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Test2025
-	@echo ... part1/src/Matrix.obj
-	@echo ... part1/src/Matrix.i
-	@echo ... part1/src/Matrix.s
-	@echo ... part1/src/Model.obj
-	@echo ... part1/src/Model.i
-	@echo ... part1/src/Model.s
 	@echo ... part2/main_matrix.obj
 	@echo ... part2/main_matrix.i
 	@echo ... part2/main_matrix.s

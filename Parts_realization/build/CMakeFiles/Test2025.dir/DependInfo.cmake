@@ -8,8 +8,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "D:/Test2025/Parts_realization/part1/src/Matrix.cpp" "CMakeFiles/Test2025.dir/part1/src/Matrix.cpp.obj" "gcc" "CMakeFiles/Test2025.dir/part1/src/Matrix.cpp.obj.d"
-  "D:/Test2025/Parts_realization/part1/src/Model.cpp" "CMakeFiles/Test2025.dir/part1/src/Model.cpp.obj" "gcc" "CMakeFiles/Test2025.dir/part1/src/Model.cpp.obj.d"
   "D:/Test2025/Parts_realization/part2/main_matrix.cpp" "CMakeFiles/Test2025.dir/part2/main_matrix.cpp.obj" "gcc" "CMakeFiles/Test2025.dir/part2/main_matrix.cpp.obj.d"
   )
 

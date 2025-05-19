@@ -32,4 +32,13 @@ Matrix<T> Model<T>::Relu(Matrix<T>& A){
     return A;
 }
 
-
+template<class T>
+void Model<T>::show(Matrix<T>& index){
+      for(auto i = 0 ; i<index.line ; i++){
+            for(auto j = 0 ; j<index.column; j++){
+                std::cout<<index.matrix[i][j]<<" ";
+            }
+            std::cout<<"\n";
+      }
+      std::cout<<"\n\n";
+   }

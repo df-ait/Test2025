@@ -84,12 +84,12 @@ clean: CMakeFiles/Test2025.dir/clean
 CMakeFiles/Test2025.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test2025.dir\build.make CMakeFiles/Test2025.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test2025.dir\build.make CMakeFiles/Test2025.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\Test2025\Parts_realization\build\CMakeFiles --progress-num=1,2,3,4 "Built target Test2025"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\Test2025\Parts_realization\build\CMakeFiles --progress-num=1,2 "Built target Test2025"
 .PHONY : CMakeFiles/Test2025.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Test2025.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\Test2025\Parts_realization\build\CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\Test2025\Parts_realization\build\CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/Test2025.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start D:\Test2025\Parts_realization\build\CMakeFiles 0
 .PHONY : CMakeFiles/Test2025.dir/rule
@@ -101,7 +101,7 @@ Test2025: CMakeFiles/Test2025.dir/rule
 # codegen rule for target.
 CMakeFiles/Test2025.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test2025.dir\build.make CMakeFiles/Test2025.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\Test2025\Parts_realization\build\CMakeFiles --progress-num=1,2,3,4 "Finished codegen for target Test2025"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\Test2025\Parts_realization\build\CMakeFiles --progress-num=1,2 "Finished codegen for target Test2025"
 .PHONY : CMakeFiles/Test2025.dir/codegen
 
 # clean rule for target.

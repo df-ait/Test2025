@@ -23,11 +23,14 @@ int main(){
     std::ifstream fin(folder+"/meta.json");
     j = nlohmann::json::parse(fin);
 
+    std::cout<<"json path is"<<folder+"/meta.json\n\n";
     std::shared_ptr<Base_Model> only;
     if(j["type"] == "fp32"){
+        std::cout<<"is float\n\n";
         only = std::make_shared<Model<float>>(folder , j);
     }
     else if(j["type"] == "fp64"){
+        std::cout<<"is double\n\n";
         only = std::make_shared<Model<double>>(folder , j);
     }
     // else if(j["type"] == "int8"){
@@ -41,7 +44,4 @@ int main(){
     }
 
     /*传入一个矩阵*/
-    // Matrix<float>input(1,748);
-    // Matrix<float>res = only->forward(input);
-    // show(res);
 }

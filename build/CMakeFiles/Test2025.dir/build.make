@@ -71,38 +71,10 @@ include CMakeFiles/Test2025.dir/flags.make
 CMakeFiles/Test2025.dir/codegen:
 .PHONY : CMakeFiles/Test2025.dir/codegen
 
-CMakeFiles/Test2025.dir/part1/src/Matrix.cpp.obj: CMakeFiles/Test2025.dir/flags.make
-CMakeFiles/Test2025.dir/part1/src/Matrix.cpp.obj: D:/Test2025/Parts_realization/part1/src/Matrix.cpp
-CMakeFiles/Test2025.dir/part1/src/Matrix.cpp.obj: CMakeFiles/Test2025.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Test2025\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Test2025.dir/part1/src/Matrix.cpp.obj"
-	D:\ddddffff\Mingw14.2.0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Test2025.dir/part1/src/Matrix.cpp.obj -MF CMakeFiles\Test2025.dir\part1\src\Matrix.cpp.obj.d -o CMakeFiles\Test2025.dir\part1\src\Matrix.cpp.obj -c D:\Test2025\Parts_realization\part1\src\Matrix.cpp
-
-CMakeFiles/Test2025.dir/part1/src/Matrix.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Test2025.dir/part1/src/Matrix.cpp.i"
-	D:\ddddffff\Mingw14.2.0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Test2025\Parts_realization\part1\src\Matrix.cpp > CMakeFiles\Test2025.dir\part1\src\Matrix.cpp.i
-
-CMakeFiles/Test2025.dir/part1/src/Matrix.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Test2025.dir/part1/src/Matrix.cpp.s"
-	D:\ddddffff\Mingw14.2.0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Test2025\Parts_realization\part1\src\Matrix.cpp -o CMakeFiles\Test2025.dir\part1\src\Matrix.cpp.s
-
-CMakeFiles/Test2025.dir/part1/src/Model.cpp.obj: CMakeFiles/Test2025.dir/flags.make
-CMakeFiles/Test2025.dir/part1/src/Model.cpp.obj: D:/Test2025/Parts_realization/part1/src/Model.cpp
-CMakeFiles/Test2025.dir/part1/src/Model.cpp.obj: CMakeFiles/Test2025.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Test2025\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Test2025.dir/part1/src/Model.cpp.obj"
-	D:\ddddffff\Mingw14.2.0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Test2025.dir/part1/src/Model.cpp.obj -MF CMakeFiles\Test2025.dir\part1\src\Model.cpp.obj.d -o CMakeFiles\Test2025.dir\part1\src\Model.cpp.obj -c D:\Test2025\Parts_realization\part1\src\Model.cpp
-
-CMakeFiles/Test2025.dir/part1/src/Model.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Test2025.dir/part1/src/Model.cpp.i"
-	D:\ddddffff\Mingw14.2.0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Test2025\Parts_realization\part1\src\Model.cpp > CMakeFiles\Test2025.dir\part1\src\Model.cpp.i
-
-CMakeFiles/Test2025.dir/part1/src/Model.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Test2025.dir/part1/src/Model.cpp.s"
-	D:\ddddffff\Mingw14.2.0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Test2025\Parts_realization\part1\src\Model.cpp -o CMakeFiles\Test2025.dir\part1\src\Model.cpp.s
-
 CMakeFiles/Test2025.dir/part2/main_matrix.cpp.obj: CMakeFiles/Test2025.dir/flags.make
 CMakeFiles/Test2025.dir/part2/main_matrix.cpp.obj: D:/Test2025/Parts_realization/part2/main_matrix.cpp
 CMakeFiles/Test2025.dir/part2/main_matrix.cpp.obj: CMakeFiles/Test2025.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Test2025\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Test2025.dir/part2/main_matrix.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Test2025\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Test2025.dir/part2/main_matrix.cpp.obj"
 	D:\ddddffff\Mingw14.2.0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Test2025.dir/part2/main_matrix.cpp.obj -MF CMakeFiles\Test2025.dir\part2\main_matrix.cpp.obj.d -o CMakeFiles\Test2025.dir\part2\main_matrix.cpp.obj -c D:\Test2025\Parts_realization\part2\main_matrix.cpp
 
 CMakeFiles/Test2025.dir/part2/main_matrix.cpp.i: cmake_force
@@ -115,21 +87,17 @@ CMakeFiles/Test2025.dir/part2/main_matrix.cpp.s: cmake_force
 
 # Object files for target Test2025
 Test2025_OBJECTS = \
-"CMakeFiles/Test2025.dir/part1/src/Matrix.cpp.obj" \
-"CMakeFiles/Test2025.dir/part1/src/Model.cpp.obj" \
 "CMakeFiles/Test2025.dir/part2/main_matrix.cpp.obj"
 
 # External object files for target Test2025
 Test2025_EXTERNAL_OBJECTS =
 
-Test2025.exe: CMakeFiles/Test2025.dir/part1/src/Matrix.cpp.obj
-Test2025.exe: CMakeFiles/Test2025.dir/part1/src/Model.cpp.obj
 Test2025.exe: CMakeFiles/Test2025.dir/part2/main_matrix.cpp.obj
 Test2025.exe: CMakeFiles/Test2025.dir/build.make
 Test2025.exe: CMakeFiles/Test2025.dir/linkLibs.rsp
 Test2025.exe: CMakeFiles/Test2025.dir/objects1.rsp
 Test2025.exe: CMakeFiles/Test2025.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\Test2025\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Test2025.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\Test2025\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Test2025.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Test2025.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
