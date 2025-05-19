@@ -360,4 +360,5 @@ CMakeFiles/Test2025.dir/part2/main_matrix.cpp.obj: \
  D:/ddddffff/Mingw14.2.0/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/latch \
  D:/ddddffff/Mingw14.2.0/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/syncstream \
  D:/Test2025/Parts_realization/part1/head/Matrix.h \
- D:/Test2025/Parts_realization/part1/head/Model.h D:/Test2025/json.hpp
+ D:/Test2025/Parts_realization/part1/head/Model.h D:/Test2025/json.hpp \
+ D:/Test2025/json.hpp
