@@ -3,17 +3,15 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "D:/ddddffff/opencv/build/x64/MinGW/install/include",
+                "D:/ddddffff/opencv/build/x64/MinGW/install/include/opencv2"
             ],
-            "defines": [
-                "_DEBUG",
-                "UNICODE",
-                "_UNICODE"
-            ],
-            "compilerPath": "D:\\ddddffff\\Mingw14.2.0\\mingw64\\bin\\gcc.exe",
-            "cStandard": "c23",
-            "cppStandard": "gnu++23",
-            "intelliSenseMode": "windows-gcc-x64"
+            "defines": [],
+            "compilerPath": "D:/ddddffff/mingw64.8.0.1/bin/g++.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "${default}"
         }
     ],
     "version": 4
