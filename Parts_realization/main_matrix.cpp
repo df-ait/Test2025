@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
-#include "../part1/head/Matrix.h"
-#include "../part1/head/Model.h"
-#include "../../json.hpp"
+#include "head/Matrix.h"
+#include "head/Model.h"
+#include "../json.hpp"
 
 template<typename T>
 void show(Matrix<T>& index){

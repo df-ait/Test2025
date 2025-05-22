@@ -1,7 +1,7 @@
 #pragma once
 #include <bits/stdc++.h>
 #include "Matrix.h"
-#include "../../../json.hpp"
+#include "../../json.hpp"
 
 class Base_Model{
  public:

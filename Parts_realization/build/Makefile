@@ -128,29 +128,29 @@ Test2025/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test2025.dir\build.make CMakeFiles/Test2025.dir/build
 .PHONY : Test2025/fast
 
-part2/main_matrix.obj: part2/main_matrix.cpp.obj
-.PHONY : part2/main_matrix.obj
+main_matrix.obj: main_matrix.cpp.obj
+.PHONY : main_matrix.obj
 
 # target to build an object file
-part2/main_matrix.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test2025.dir\build.make CMakeFiles/Test2025.dir/part2/main_matrix.cpp.obj
-.PHONY : part2/main_matrix.cpp.obj
+main_matrix.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test2025.dir\build.make CMakeFiles/Test2025.dir/main_matrix.cpp.obj
+.PHONY : main_matrix.cpp.obj
 
-part2/main_matrix.i: part2/main_matrix.cpp.i
-.PHONY : part2/main_matrix.i
+main_matrix.i: main_matrix.cpp.i
+.PHONY : main_matrix.i
 
 # target to preprocess a source file
-part2/main_matrix.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test2025.dir\build.make CMakeFiles/Test2025.dir/part2/main_matrix.cpp.i
-.PHONY : part2/main_matrix.cpp.i
+main_matrix.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test2025.dir\build.make CMakeFiles/Test2025.dir/main_matrix.cpp.i
+.PHONY : main_matrix.cpp.i
 
-part2/main_matrix.s: part2/main_matrix.cpp.s
-.PHONY : part2/main_matrix.s
+main_matrix.s: main_matrix.cpp.s
+.PHONY : main_matrix.s
 
 # target to generate assembly for a file
-part2/main_matrix.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test2025.dir\build.make CMakeFiles/Test2025.dir/part2/main_matrix.cpp.s
-.PHONY : part2/main_matrix.cpp.s
+main_matrix.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test2025.dir\build.make CMakeFiles/Test2025.dir/main_matrix.cpp.s
+.PHONY : main_matrix.cpp.s
 
 # Help Target
 help:
@@ -161,9 +161,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Test2025
-	@echo ... part2/main_matrix.obj
-	@echo ... part2/main_matrix.i
-	@echo ... part2/main_matrix.s
+	@echo ... main_matrix.obj
+	@echo ... main_matrix.i
+	@echo ... main_matrix.s
 .PHONY : help
 
 
