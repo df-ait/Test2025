@@ -30,7 +30,30 @@ Matrix<float> read_img(const std::string path , cv::Mat target){
 }
 
 void create_socket(){
-
+    WSADATA net;
+    if(WSAStartup(MAKEWORD(2 ,2) , &net)!=0){
+        std::cerr<<"WSAStarup failed\n\n";
+        return;
+    }
+    SOCKET tranfer = socket(AF_INET , SOCK_STREAM , 0);
+    if(tranfer == INVALID_SOCKET){
+        std::cerr<<"Create socket failed\n\n";
+        WSACleanup();
+        return;
+    }
+    sockaddr_in tranfer_addr;
+    tranfer_addr.sin_family = AF_INET;
+    tranfer_addr.sin_port = htons(8080);
+    tranfer_addr.sin_addr.s_addr = INADDR_ANY;
+    if(bind(tranfer , (sockaddr*)&tranfer_addr , sizeof(tranfer_addr)) == SOCKET_ERROR){
+        std::cerr<<"Bind IP and port failed\n\n";
+        return;
+    }
+    if(listen(tranfer , SOMAXCONN) == SOCKET_ERROR){
+        std::cerr<<"Bugging failed\n\n";
+        return;
+    }
+    std::cout<<"Tranfer Connected to port 8080 successfully\n\n";
 }
 
 int main(){

@@ -7,7 +7,7 @@ using namespace cv;
 
 int main()
 {
-    string path = "D:/DeBuG_opencv/pic1.png";
+    string path = "D:/Test2025/nums/3.png";
     //以灰度方式读取这张图
     cv::Mat img = imread(path ,IMREAD_GRAYSCALE);
     //创建窗口 (自由比例)

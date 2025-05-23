@@ -459,7 +459,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "D:/ddddffff/cmake-3.31.7-windows-x86_64/bin/cmake-gui.exe"
+			"value" : "D:/ddddffff/Cmake-3.9.0-rc3-win64-x64/bin/cmake-gui.exe"
 		},
 		{
 			"name" : "CMAKE_EXECUTABLE_FORMAT",
@@ -671,7 +671,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "C:/Program Files (x86)/week3"
+			"value" : "C:/Program Files (x86)/TEST2025"
 		},
 		{
 			"name" : "CMAKE_LINKER",
@@ -1286,40 +1286,28 @@
 			"value" : "FALSE"
 		},
 		{
-			"name" : "Project_BINARY_DIR",
+			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_OpenCV",
 			"properties" : 
 			[
 				{
 					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
+					"value" : "Details about finding OpenCV"
 				}
 			],
-			"type" : "STATIC",
-			"value" : "D:/Test2025/build"
+			"type" : "INTERNAL",
+			"value" : "[D:/ddddffff/opencv/build/x64/MinGW][v4.5.5()]"
 		},
 		{
-			"name" : "Project_IS_TOP_LEVEL",
+			"name" : "OpenCV_DIR",
 			"properties" : 
 			[
 				{
 					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
+					"value" : "The directory containing a CMake configuration file for OpenCV."
 				}
 			],
-			"type" : "STATIC",
-			"value" : "ON"
-		},
-		{
-			"name" : "Project_SOURCE_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "D:/Test2025/Parts_realization"
+			"type" : "PATH",
+			"value" : "D:/ddddffff/opencv/build/x64/MinGW"
 		},
 		{
 			"name" : "TEST2025_BINARY_DIR",
@@ -1347,42 +1335,6 @@
 		},
 		{
 			"name" : "TEST2025_SOURCE_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "D:/Test2025/Parts_realization"
-		},
-		{
-			"name" : "week3_BINARY_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "D:/Test2025/build"
-		},
-		{
-			"name" : "week3_IS_TOP_LEVEL",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "ON"
-		},
-		{
-			"name" : "week3_SOURCE_DIR",
 			"properties" : 
 			[
 				{

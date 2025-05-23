@@ -72,18 +72,19 @@ CMakeFiles/Test2025.dir/codegen:
 .PHONY : CMakeFiles/Test2025.dir/codegen
 
 CMakeFiles/Test2025.dir/main_matrix.cpp.obj: CMakeFiles/Test2025.dir/flags.make
+CMakeFiles/Test2025.dir/main_matrix.cpp.obj: CMakeFiles/Test2025.dir/includes_CXX.rsp
 CMakeFiles/Test2025.dir/main_matrix.cpp.obj: D:/Test2025/Parts_realization/main_matrix.cpp
 CMakeFiles/Test2025.dir/main_matrix.cpp.obj: CMakeFiles/Test2025.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Test2025\Parts_realization\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Test2025.dir/main_matrix.cpp.obj"
-	D:\ddddffff\Mingw14.2.0\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Test2025.dir/main_matrix.cpp.obj -MF CMakeFiles\Test2025.dir\main_matrix.cpp.obj.d -o CMakeFiles\Test2025.dir\main_matrix.cpp.obj -c D:\Test2025\Parts_realization\main_matrix.cpp
+	D:\ddddffff\mingw64.8.0.1\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Test2025.dir/main_matrix.cpp.obj -MF CMakeFiles\Test2025.dir\main_matrix.cpp.obj.d -o CMakeFiles\Test2025.dir\main_matrix.cpp.obj -c D:\Test2025\Parts_realization\main_matrix.cpp
 
 CMakeFiles/Test2025.dir/main_matrix.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Test2025.dir/main_matrix.cpp.i"
-	D:\ddddffff\Mingw14.2.0\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Test2025\Parts_realization\main_matrix.cpp > CMakeFiles\Test2025.dir\main_matrix.cpp.i
+	D:\ddddffff\mingw64.8.0.1\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Test2025\Parts_realization\main_matrix.cpp > CMakeFiles\Test2025.dir\main_matrix.cpp.i
 
 CMakeFiles/Test2025.dir/main_matrix.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Test2025.dir/main_matrix.cpp.s"
-	D:\ddddffff\Mingw14.2.0\mingw64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Test2025\Parts_realization\main_matrix.cpp -o CMakeFiles\Test2025.dir\main_matrix.cpp.s
+	D:\ddddffff\mingw64.8.0.1\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Test2025\Parts_realization\main_matrix.cpp -o CMakeFiles\Test2025.dir\main_matrix.cpp.s
 
 # Object files for target Test2025
 Test2025_OBJECTS = \
@@ -94,6 +95,22 @@ Test2025_EXTERNAL_OBJECTS =
 
 Test2025.exe: CMakeFiles/Test2025.dir/main_matrix.cpp.obj
 Test2025.exe: CMakeFiles/Test2025.dir/build.make
+Test2025.exe: D:/ddddffff/opencv/build/x64/MinGW/lib/libopencv_world455.dll.a
+Test2025.exe: D:/ddddffff/opencv/build/x64/MinGW/lib/libopencv_world455.dll.a
+Test2025.exe: D:/ddddffff/opencv/build/x64/MinGW/lib/libopencv_world455.dll.a
+Test2025.exe: D:/ddddffff/opencv/build/x64/MinGW/lib/libopencv_world455.dll.a
+Test2025.exe: D:/ddddffff/opencv/build/x64/MinGW/lib/libopencv_world455.dll.a
+Test2025.exe: D:/ddddffff/opencv/build/x64/MinGW/lib/libopencv_world455.dll.a
+Test2025.exe: D:/ddddffff/opencv/build/x64/MinGW/lib/libopencv_world455.dll.a
+Test2025.exe: D:/ddddffff/opencv/build/x64/MinGW/lib/libopencv_world455.dll.a
+Test2025.exe: D:/ddddffff/opencv/build/x64/MinGW/lib/libopencv_world455.dll.a
+Test2025.exe: D:/ddddffff/opencv/build/x64/MinGW/lib/libopencv_world455.dll.a
+Test2025.exe: D:/ddddffff/opencv/build/x64/MinGW/lib/libopencv_world455.dll.a
+Test2025.exe: D:/ddddffff/opencv/build/x64/MinGW/lib/libopencv_world455.dll.a
+Test2025.exe: D:/ddddffff/opencv/build/x64/MinGW/lib/libopencv_world455.dll.a
+Test2025.exe: D:/ddddffff/opencv/build/x64/MinGW/lib/libopencv_world455.dll.a
+Test2025.exe: D:/ddddffff/opencv/build/x64/MinGW/lib/libopencv_world455.dll.a
+Test2025.exe: D:/ddddffff/opencv/build/x64/MinGW/lib/libopencv_world455.dll.a
 Test2025.exe: CMakeFiles/Test2025.dir/linkLibs.rsp
 Test2025.exe: CMakeFiles/Test2025.dir/objects1.rsp
 Test2025.exe: CMakeFiles/Test2025.dir/link.txt

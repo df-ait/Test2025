@@ -39,13 +39,13 @@ class Model : public Base_Model{
       bias_2 = read_files(b2_ , j["fc2.bias"][0] , j["fc2.bias"][1]);
 
       std::cout<<"w1:\n";
-      show(weight_1);
+      //show(weight_1);
       std::cout<<"b1:\n";
-      show(bias_1);
+      //show(bias_1);
       std::cout<<"w2:\n";
-      show(weight_2);
+      //show(weight_2);
       std::cout<<"b2:\n";
-      show(bias_2);
+      //show(bias_2);
     }
     //辅助读取矩阵
     Matrix<T> read_files(const std::string& filename , int line ,int column){

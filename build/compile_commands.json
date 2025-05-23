@@ -1,8 +1,8 @@
 [
 {
   "directory": "D:/Test2025/build",
-  "command": "D:\\ddddffff\\Mingw14.2.0\\mingw64\\bin\\g++.exe   -g -std=gnu++20 -o CMakeFiles\\Test2025.dir\\part2\\main_matrix.cpp.obj -c D:\\Test2025\\Parts_realization\\part2\\main_matrix.cpp",
-  "file": "D:/Test2025/Parts_realization/part2/main_matrix.cpp",
-  "output": "CMakeFiles/Test2025.dir/part2/main_matrix.cpp.obj"
+  "command": "D:\\ddddffff\\Mingw14.2.0\\mingw64\\bin\\g++.exe  @CMakeFiles/Test2025.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Test2025.dir\\main_matrix.cpp.obj -c D:\\Test2025\\Parts_realization\\main_matrix.cpp",
+  "file": "D:/Test2025/Parts_realization/main_matrix.cpp",
+  "output": "CMakeFiles/Test2025.dir/main_matrix.cpp.obj"
 }
 ]

@@ -204,6 +204,28 @@
 			"isCMake" : true,
 			"isExternal" : true,
 			"path" : "D:/ddddffff/cmake-3.31.7-windows-x86_64/share/cmake-3.31/Modules/Platform/Linker/Windows-GNU.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "D:/ddddffff/opencv/build/x64/MinGW/OpenCVConfig-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "D:/ddddffff/opencv/build/x64/MinGW/OpenCVConfig.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/ddddffff/cmake-3.31.7-windows-x86_64/share/cmake-3.31/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "D:/ddddffff/cmake-3.31.7-windows-x86_64/share/cmake-3.31/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "D:/ddddffff/opencv/build/x64/MinGW/OpenCVModules.cmake"
 		}
 	],
 	"kind" : "cmakeFiles",
