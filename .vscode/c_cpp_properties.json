@@ -8,9 +8,9 @@
                 "D:/ddddffff/opencv/build/x64/MinGW/install/include/opencv2"
             ],
             "defines": [],
-            "compilerPath": "D:/ddddffff/mingw64.8.0.1/bin/g++.exe",
+            "compilerPath": "D:/ddddffff/mingw64_11.2.0/bin/g++.exe",
             "cStandard": "c11",
-            "cppStandard": "c++17",
+            "cppStandard": "c++20",
             "intelliSenseMode": "${default}"
         }
     ],

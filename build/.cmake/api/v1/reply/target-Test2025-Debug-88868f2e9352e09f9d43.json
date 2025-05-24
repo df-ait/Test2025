@@ -52,14 +52,17 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -std=gnu++20"
+					"fragment" : "-g"
+				},
+				{
+					"fragment" : "-std=gnu++20"
 				}
 			],
 			"includes" : 
 			[
 				{
 					"backtrace" : 3,
-					"path" : "D:/ddddffff/opencv/build/x64/MinGW/install/include/opencv2"
+					"path" : "D:/ddddffff/opencv4.5.5/build/x64/MinGW/install/include/opencv2"
 				},
 				{
 					"backtrace" : 2,
