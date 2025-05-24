@@ -4,6 +4,6 @@ set(CMAKE_CXX_STANDARD 20)
 set(OpenCV_DIR D:/ddddffff/opencv4.5.5/build/x64/MinGW)
 find_package(OpenCV REQUIRED)
 include_directories(D:/ddddffff/opencv4.5.5/build/x64/MinGW/install/include/opencv2)
-add_executable(Test2025 main_matrix.cpp)
+add_executable(Test2025 server_matrix.cpp)
 target_link_libraries(Test2025 ${OpenCV_LIBS})
 

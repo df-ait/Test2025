@@ -32,32 +32,46 @@ Matrix<float> read_img(const std::string path , cv::Mat target){
     return Matrix<float>(res);
 }
 
-// void create_socket(){
-//     WSADATA net;
-//     if(WSAStartup(MAKEWORD(2 ,2) , &net)!=0){
-//         std::cerr<<"WSAStarup failed\n\n";
-//         return;
-//     }
-//     SOCKET receve = socket(AF_INET , SOCK_STREAM , 0);
-//     if(receve == INVALID_SOCKET){
-//         std::cerr<<"Create socket failed\n\n";
-//         WSACleanup();
-//         return;
-//     }
-//     sockaddr_in receve_addr;
-//     receve_addr.sin_family = AF_INET;
-//     receve_addr.sin_port = htons(8080);
-//     receve_addr.sin_addr.s_addr = INADDR_ANY;
-//     if(bind(receve , (sockaddr*)&receve_addr , sizeof(receve_addr)) == SOCKET_ERROR){
-//         std::cerr<<"Bind IP and port failed\n\n";
-//         return;
-//     }
-//     if(listen(receve , SOMAXCONN) == SOCKET_ERROR){
-//         std::cerr<<"Bugging failed\n\n";
-//         return;
-//     }
-//     std::cout<<"Receve Connected to port 8080 successfully\n\n";
-// }
+void create_connect(){
+    WSAData net;
+    if(WSAStartup(MAKEWORD(2,2) , &net) != 0){
+        std::cerr<<"加载套接字库失败\n\n";
+        WSACleanup();
+        return;
+    }
+    SOCKET se_matrix = socket(AF_INET , SOCK_STREAM , 0);
+    if(se_matrix == INVALID_SOCKET){
+        std::cerr<<"创建套接字失败\n\n";
+        WSACleanup();
+        return;
+    }
+    sockaddr_in ser_matrix_addr;
+    ser_matrix_addr.sin_family = AF_INET;
+    ser_matrix_addr.sin_port = htons(8080);
+    ser_matrix_addr.sin_addr.S_un.S_addr = INADDR_ANY;
+    if(bind(se_matrix , (sockaddr*)&ser_matrix_addr , sizeof(ser_matrix_addr)) != 0){
+        std::cerr<<"绑定服务端端口和ip地址失败\n\n";
+        WSACleanup();
+    }
+    if(listen(se_matrix , 128) != 0){
+        std::cerr<<"服务端无法监听客户端连接请求\n\n";
+        WSACleanup();
+        return;
+    }
+    while (1)
+    {
+        sockaddr_in client_matrix;
+        int cl_size = sizeof(client_matrix);
+        SOCKET connect_fd = accept(se_matrix , (sockaddr*)&client_matrix , &cl_size);
+        if(connect_fd == -1){
+            std::cerr<<"客户端请求连接失败\n\n";
+            WSACleanup();
+            return;
+        } 
+        
+    }
+    
+}
 
 template<typename T>
 void show(Matrix<T>& index){
