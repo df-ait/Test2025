@@ -53,5 +53,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/Test2025.dir/DependInfo.cmake"
+  "CMakeFiles/Test_server.dir/DependInfo.cmake"
+  "CMakeFiles/Test_client.dir/DependInfo.cmake"
   )

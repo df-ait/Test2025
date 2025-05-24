@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "Test2025.exe"
+			"path" : "Test_server.exe"
 		},
 		{
-			"path" : "Test2025.pdb"
+			"path" : "Test_server.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -35,7 +35,13 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 8,
+				"line" : 9,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 12,
 				"parent" : 0
 			},
 			{
@@ -61,7 +67,7 @@
 			"includes" : 
 			[
 				{
-					"backtrace" : 3,
+					"backtrace" : 4,
 					"path" : "D:/ddddffff/opencv4.5.5/build/x64/MinGW/install/include/opencv2"
 				},
 				{
@@ -175,7 +181,7 @@
 			]
 		}
 	],
-	"id" : "Test2025::@6890427a1f51a3e7e1df",
+	"id" : "Test_server::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -269,14 +275,19 @@
 				"role" : "libraries"
 			},
 			{
+				"backtrace" : 3,
+				"fragment" : "-lws2_32",
+				"role" : "libraries"
+			},
+			{
 				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
 				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
-	"name" : "Test2025",
-	"nameOnDisk" : "Test2025.exe",
+	"name" : "Test_server",
+	"nameOnDisk" : "Test_server.exe",
 	"paths" : 
 	{
 		"build" : ".",

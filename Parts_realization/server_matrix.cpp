@@ -7,70 +7,99 @@
 #include <opencv2\opencv.hpp>
 #pragma comment(lib , "ws2_32.lib")
 
-Matrix<float> read_img(const std::string path , cv::Mat target){
-    target = cv::imread(path , cv::IMREAD_GRAYSCALE);
-    cv::imshow("output",target);
-    cv::waitKey(1000);
-    if(target.empty()){
-        std::cout<<"Failed to load picture:"<<path<<"\n\n";
-        return Matrix<float>(0,0);
-    }
-    cv::Mat new_im;
-    cv::resize(target , new_im ,cv::Size(28,28) , 0 , 0 , cv::INTER_AREA);
-    cv::imshow("output" , new_im);
-    cv::waitKey(100);
-    //å¼€å§‹è·å–å›¾åƒå¯¹åº”çš„çŸ©é˜µ
-    std::vector<std::vector<float>>res;
-    std::vector<float>row;
-    for(int i = 0 ; i < new_im.rows ; i++){
-        for(int j = 0 ; j < new_im.cols ; j++){
-            int px = static_cast<int>(new_im.at<uchar>(i , j));
-            row.push_back((float)px/255);
-        }
-    }
-    res.push_back(row);
-    return Matrix<float>(res);
-}
-
-void create_connect(){
+// Matrix<float> read_img(const std::string path , cv::Mat target){
+//     target = cv::imread(path , cv::IMREAD_GRAYSCALE);
+//     cv::imshow("output",target);
+//     cv::waitKey(1000);
+//     if(target.empty()){
+//         std::cout<<"Failed to load picture:"<<path<<"\n\n";
+//         return Matrix<float>(0,0);
+//     }
+//     cv::Mat new_im;
+//     cv::resize(target , new_im ,cv::Size(28,28) , 0 , 0 , cv::INTER_AREA);
+//     cv::imshow("output" , new_im);
+//     cv::waitKey(100);
+//     //¿ªÊ¼»ñÈ¡Í¼Ïñ¶ÔÓ¦µÄ¾ØÕó
+//     std::vector<std::vector<float>>res;
+//     std::vector<float>row;
+//     for(int i = 0 ; i < new_im.rows ; i++){
+//         for(int j = 0 ; j < new_im.cols ; j++){
+//             int px = static_cast<int>(new_im.at<uchar>(i , j));
+//             row.push_back((float)px/255);
+//         }
+//     }
+//     res.push_back(row);
+//     return Matrix<float>(res);
+// }
+void create_connect(std::shared_ptr<Base_Model> only){
     WSAData net;
     if(WSAStartup(MAKEWORD(2,2) , &net) != 0){
-        std::cerr<<"åŠ è½½å¥—æ¥å­—åº“å¤±è´¥\n\n";
+        std::cerr<<"server:¼ÓÔØÌ×½Ó×Ö¿âÊ§°Ü\n\n";
         WSACleanup();
-        return;
+        return ;
     }
-    SOCKET se_matrix = socket(AF_INET , SOCK_STREAM , 0);
-    if(se_matrix == INVALID_SOCKET){
-        std::cerr<<"åˆ›å»ºå¥—æ¥å­—å¤±è´¥\n\n";
+    SOCKET listen_client = socket(AF_INET , SOCK_STREAM , 0);
+    if(listen_client == INVALID_SOCKET){
+        std::cerr<<"server:´´½¨Ì×½Ó×ÖÊ§°Ü\n\n";
         WSACleanup();
-        return;
+        return ;
     }
     sockaddr_in ser_matrix_addr;
     ser_matrix_addr.sin_family = AF_INET;
     ser_matrix_addr.sin_port = htons(8080);
     ser_matrix_addr.sin_addr.S_un.S_addr = INADDR_ANY;
-    if(bind(se_matrix , (sockaddr*)&ser_matrix_addr , sizeof(ser_matrix_addr)) != 0){
-        std::cerr<<"ç»‘å®šæœåŠ¡ç«¯ç«¯å£å’Œipåœ°å€å¤±è´¥\n\n";
+    if(bind(listen_client , (sockaddr*)&ser_matrix_addr , sizeof(ser_matrix_addr)) == SOCKET_ERROR){
+        std::cerr<<"server:°ó¶¨·şÎñ¶Ë¶Ë¿ÚºÍipµØÖ·Ê§°Ü\n\n";
+        closesocket(listen_client);
         WSACleanup();
+        return ;
     }
-    if(listen(se_matrix , 128) != 0){
-        std::cerr<<"æœåŠ¡ç«¯æ— æ³•ç›‘å¬å®¢æˆ·ç«¯è¿æ¥è¯·æ±‚\n\n";
+    if(listen(listen_client , SOMAXCONN) == SOCKET_ERROR){
+        std::cerr<<"server:·şÎñ¶ËÎŞ·¨¼àÌı¿Í»§¶ËÁ¬½ÓÇëÇó\n\n";
+        closesocket(listen_client);
         WSACleanup();
-        return;
-    }
-    while (1)
-    {
-        sockaddr_in client_matrix;
-        int cl_size = sizeof(client_matrix);
-        SOCKET connect_fd = accept(se_matrix , (sockaddr*)&client_matrix , &cl_size);
-        if(connect_fd == -1){
-            std::cerr<<"å®¢æˆ·ç«¯è¯·æ±‚è¿æ¥å¤±è´¥\n\n";
-            WSACleanup();
-            return;
-        } 
-        
+        return ;
     }
     
+    sockaddr_in client_matrix;
+    int cl_size = sizeof(client_matrix);
+    SOCKET connect_fd = accept(listen_client , (sockaddr*)&client_matrix , &cl_size);
+    if(connect_fd == INVALID_SOCKET){
+        std::cerr<<"server:¿Í»§¶ËÇëÇóÁ¬½ÓÊ§°Ü\n\n";
+        closesocket(listen_client);
+        WSACleanup();
+        return ;
+    } 
+    std::cout<<"server:³É¹¦Á´½Óµ½¿Í»§¶Ë\n";  
+    
+    //ÏÈ½ÓÊÜ¾ØÕó
+    size_t pre_matrix_size;
+    recv(connect_fd , (char*)&pre_matrix_size , sizeof(size_t) , 0);
+    std::cout<<"pre_matrix_size:"<<pre_matrix_size<<std::endl;
+    std::vector<float>vec(pre_matrix_size);
+    recv(connect_fd , (char*)vec.data() , pre_matrix_size*sizeof(float) , 0);
+    std::cout << "Received vector from client: ";
+    for (float f : vec) {
+        std::cout << f << " ";
+    }
+    std::cout << "\n";
+    std::vector<std::vector<float>>mid;
+    mid.push_back(vec);
+    Matrix<float>pic(mid);
+    //¼ÆËã¹ıºóÔÙ·¢»ØÈ¥
+    
+    Matrix<float>res = only->forward(pic);
+    std::vector<float>output = res.matrix[0];
+    size_t bf_matrix_size = output.size();
+    std::cout<<"res.size:"<<bf_matrix_size<<std::endl;
+    send(connect_fd , (char*)&bf_matrix_size , sizeof(size_t) , 0);
+    send(connect_fd , (char*)output.data() , bf_matrix_size*sizeof(float) , 0);
+    std::cout << "Sent processed vector back to client\n";
+
+    closesocket(listen_client);
+    closesocket(connect_fd);
+    WSACleanup();
+    return;
 }
 
 template<typename T>
@@ -104,23 +133,17 @@ int main(){
         std::cout<<"is double\n\n";
         only = std::make_shared<Model<double>>(folder , j);
     }
-    // else if(j["type"] == "int8"){
-    //     only = std::make_shared<Model<int>>(folder , j);
-    // }
-    // else if(j["type"] == "int32_t"||j["type"] == "int64_t"){
-    //     only = std::make_shared<Model<long>>(folder , j);
-    // }
     else{
         std::cout<<"Has no match type\n\n";
     }
-
-    /*ä¼ å…¥ä¸€ä¸ªçŸ©é˜µ*/
-    cv::Mat img_read;
-    Matrix<float> img_matrix;
-    std::string path;
-    std::cout<<"Pls enter the path of img:";
-    std::cin>>path;
-    img_matrix = read_img(path , img_read);
-    Matrix<float>push = only->forward(img_matrix);
-    show(push);
+    create_connect(only);
+    /*´«ÈëÒ»¸ö¾ØÕó*/
+    // cv::Mat img_read;
+    // Matrix<float> img_matrix;
+    // std::string path;
+    // std::cout<<"Pls enter the path of img:";
+    // std::cin>>path;
+    // img_matrix = read_img(path , img_read);
+    // Matrix<float>push = only->forward(img_matrix);
+    //show(push);
 }

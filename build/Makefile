@@ -116,24 +116,61 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Test2025
+# Target rules for targets named Test_server
 
 # Build rule for target.
-Test2025: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Test2025
-.PHONY : Test2025
+Test_server: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Test_server
+.PHONY : Test_server
 
 # fast build rule for target.
-Test2025/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test2025.dir\build.make CMakeFiles/Test2025.dir/build
-.PHONY : Test2025/fast
+Test_server/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test_server.dir\build.make CMakeFiles/Test_server.dir/build
+.PHONY : Test_server/fast
+
+#=============================================================================
+# Target rules for targets named Test_client
+
+# Build rule for target.
+Test_client: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Test_client
+.PHONY : Test_client
+
+# fast build rule for target.
+Test_client/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test_client.dir\build.make CMakeFiles/Test_client.dir/build
+.PHONY : Test_client/fast
+
+client_matrix.obj: client_matrix.cpp.obj
+.PHONY : client_matrix.obj
+
+# target to build an object file
+client_matrix.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test_client.dir\build.make CMakeFiles/Test_client.dir/client_matrix.cpp.obj
+.PHONY : client_matrix.cpp.obj
+
+client_matrix.i: client_matrix.cpp.i
+.PHONY : client_matrix.i
+
+# target to preprocess a source file
+client_matrix.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test_client.dir\build.make CMakeFiles/Test_client.dir/client_matrix.cpp.i
+.PHONY : client_matrix.cpp.i
+
+client_matrix.s: client_matrix.cpp.s
+.PHONY : client_matrix.s
+
+# target to generate assembly for a file
+client_matrix.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test_client.dir\build.make CMakeFiles/Test_client.dir/client_matrix.cpp.s
+.PHONY : client_matrix.cpp.s
 
 server_matrix.obj: server_matrix.cpp.obj
 .PHONY : server_matrix.obj
 
 # target to build an object file
 server_matrix.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test2025.dir\build.make CMakeFiles/Test2025.dir/server_matrix.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test_server.dir\build.make CMakeFiles/Test_server.dir/server_matrix.cpp.obj
 .PHONY : server_matrix.cpp.obj
 
 server_matrix.i: server_matrix.cpp.i
@@ -141,7 +178,7 @@ server_matrix.i: server_matrix.cpp.i
 
 # target to preprocess a source file
 server_matrix.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test2025.dir\build.make CMakeFiles/Test2025.dir/server_matrix.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test_server.dir\build.make CMakeFiles/Test_server.dir/server_matrix.cpp.i
 .PHONY : server_matrix.cpp.i
 
 server_matrix.s: server_matrix.cpp.s
@@ -149,7 +186,7 @@ server_matrix.s: server_matrix.cpp.s
 
 # target to generate assembly for a file
 server_matrix.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test2025.dir\build.make CMakeFiles/Test2025.dir/server_matrix.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test_server.dir\build.make CMakeFiles/Test_server.dir/server_matrix.cpp.s
 .PHONY : server_matrix.cpp.s
 
 # Help Target
@@ -160,7 +197,11 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... Test2025
+	@echo ... Test_client
+	@echo ... Test_server
+	@echo ... client_matrix.obj
+	@echo ... client_matrix.i
+	@echo ... client_matrix.s
 	@echo ... server_matrix.obj
 	@echo ... server_matrix.i
 	@echo ... server_matrix.s

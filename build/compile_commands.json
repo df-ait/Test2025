@@ -1,7 +1,12 @@
 [
 {
   "directory": "D:/Test2025/build",
-  "command": "D:\\ddddffff\\Mingw14.2.0\\mingw64\\bin\\g++.exe  @CMakeFiles/Test2025.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Test2025.dir\\server_matrix.cpp.obj -c D:\\Test2025\\Parts_realization\\server_matrix.cpp",
+  "command": "D:\\ddddffff\\Mingw14.2.0\\mingw64\\bin\\g++.exe  @CMakeFiles/Test_server.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Test_server.dir\\server_matrix.cpp.obj -c D:\\Test2025\\Parts_realization\\server_matrix.cpp",
   "file": "D:/Test2025/Parts_realization/server_matrix.cpp"
+},
+{
+  "directory": "D:/Test2025/build",
+  "command": "D:\\ddddffff\\Mingw14.2.0\\mingw64\\bin\\g++.exe  @CMakeFiles/Test_client.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Test_client.dir\\client_matrix.cpp.obj -c D:\\Test2025\\Parts_realization\\client_matrix.cpp",
+  "file": "D:/Test2025/Parts_realization/client_matrix.cpp"
 }
 ]
