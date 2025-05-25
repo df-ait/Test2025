@@ -31,6 +31,20 @@
 //     res.push_back(row);
 //     return Matrix<float>(res);
 // }
+
+template<typename T>
+void show(Matrix<T>& index){
+    std::cout<<"\n";
+      for(auto i = 0 ; i<index.line ; i++){
+            for(auto j = 0 ; j<index.column; j++){
+                std::cout<<index.matrix[i][j]<<" ";
+            }
+            std::cout<<"\n";
+      }
+      std::cout<<"\n\n";
+   }
+
+
 void create_connect(std::shared_ptr<Base_Model> only){
     WSAData net;
     if(WSAStartup(MAKEWORD(2,2) , &net) != 0){
@@ -87,8 +101,10 @@ void create_connect(std::shared_ptr<Base_Model> only){
     mid.push_back(vec);
     Matrix<float>pic(mid);
     //计算过后再发回去
-    
+    /********************************************************************** */
     Matrix<float>res = only->forward(pic);
+    std::cout<<"计算后的矩阵"<<res.line<<" "<<res.column<<"\n";
+    show(res);
     std::vector<float>output = res.matrix[0];
     size_t bf_matrix_size = output.size();
     std::cout<<"res.size:"<<bf_matrix_size<<std::endl;
@@ -101,18 +117,6 @@ void create_connect(std::shared_ptr<Base_Model> only){
     WSACleanup();
     return;
 }
-
-template<typename T>
-void show(Matrix<T>& index){
-    std::cout<<"\n";
-      for(auto i = 0 ; i<index.line ; i++){
-            for(auto j = 0 ; j<index.column; j++){
-                std::cout<<index.matrix[i][j]<<" ";
-            }
-            std::cout<<"\n";
-      }
-      std::cout<<"\n\n";
-   }
 
 int main(){
     std::string folder;
