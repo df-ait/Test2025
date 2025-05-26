@@ -7,7 +7,6 @@
 #include "head/Model.h"
 #pragma comment(lib , "ws2_32.lib")
 
-
 template<typename T>
 void show(Matrix<T>& index){
     std::cout<<"\n";
@@ -20,17 +19,16 @@ void show(Matrix<T>& index){
       std::cout<<"\n\n";
    }
 
-
 Matrix<float> read_img(const std::string path , cv::Mat target){
     target = cv::imread(path , cv::IMREAD_GRAYSCALE);
     if(target.empty()){
-        std::cout<<"Failed to load picture:"<<path<<"\n\n";
+        std::cout<<"加载图片失败:"<<path<<"\n\n";
         return Matrix<float>(0,0);
     }
     cv::Mat new_im;
     cv::resize(target , new_im ,cv::Size(28,28) , 0 , 0 , cv::INTER_AREA);
     cv::imshow("output" , new_im);
-    cv::waitKey(1000);
+    cv::waitKey(100);
     //开始获取图像对应的矩阵
     std::vector<std::vector<float>>res;
     std::vector<float>row;
@@ -40,10 +38,10 @@ Matrix<float> read_img(const std::string path , cv::Mat target){
             row.push_back((float)px/255);
         }
     }
-    res.push_back(row);
-    Matrix<float>res_(res);
-    show(res_);
-    std::cout<<res_.line<<" "<<res_.column<<"\n";
+     res.push_back(row);
+    // Matrix<float>res_(res);
+    // show(res_);
+    // std::cout<<res_.line<<" "<<res_.column<<"\n";
     return Matrix<float>(res);
 }
 
@@ -71,24 +69,19 @@ void create_socket(Matrix<float>& tranfer){
             WSACleanup();
             return;
     } 
-   
     std::cout<<"client:成功连接到服务器端\n";
-
-
     std::vector<float>befor_cal =  tranfer.matrix[0];
-
-    std::cout << "要传入之前的矩阵: ";
-    for (float f : befor_cal) {
-        std::cout << f << " ";
-    }
-    std::cout << "\n";
+    // std::cout << "要传入之前的矩阵: ";
+    // for (float f : befor_cal) {
+    //     std::cout << f << " ";
+    // }
+    // std::cout << "\n";
     //先传入矩阵大小
     size_t tranfer_m_size = befor_cal.size();
 
     send(se_matrix, (char*)&tranfer_m_size, sizeof(size_t), 0);
     //再把矩阵的数据传进去
     send(se_matrix , (char*)befor_cal.data() , sizeof(float)*tranfer_m_size , 0);
-    /********************************************************************************* */
     //同样的先接收矩阵大小，再接收元素
     size_t beforcal_size;
     recv(se_matrix , (char*)&beforcal_size ,sizeof(size_t) , 0);
@@ -101,7 +94,6 @@ void create_socket(Matrix<float>& tranfer){
     }
     std::cout << "\n";
 
-    system("pause");
     closesocket(se_matrix);
     WSACleanup();
     return;
@@ -111,14 +103,17 @@ void create_socket(Matrix<float>& tranfer){
 int main(){
     cv::Mat img_read;
     Matrix<float> img_matrix;
-    std::string path;
-    std::cout<<"Pls enter the path of img:";
-    std::cin>>path;
+    std::string path = "D:/Test2025/nums/0.png";
+    // std::cout<<"Pls enter the path of img:";
+    // std::cin>>path;
+    /**
+     动态的读取窗口上的鼠标轨迹，然后每次都传入read_img中
+     */
     img_matrix = read_img(path , img_read);
     //传入forward中计算
     //先建立通信
-    std::cout<<"要传入的矩阵:\n";
-    show(img_matrix);
+    // std::cout<<"要传入的矩阵:\n";
+    // show(img_matrix);
     create_socket(img_matrix);
     
     return 0;

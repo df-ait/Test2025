@@ -7,31 +7,6 @@
 #include <opencv2\opencv.hpp>
 #pragma comment(lib , "ws2_32.lib")
 
-// Matrix<float> read_img(const std::string path , cv::Mat target){
-//     target = cv::imread(path , cv::IMREAD_GRAYSCALE);
-//     cv::imshow("output",target);
-//     cv::waitKey(1000);
-//     if(target.empty()){
-//         std::cout<<"Failed to load picture:"<<path<<"\n\n";
-//         return Matrix<float>(0,0);
-//     }
-//     cv::Mat new_im;
-//     cv::resize(target , new_im ,cv::Size(28,28) , 0 , 0 , cv::INTER_AREA);
-//     cv::imshow("output" , new_im);
-//     cv::waitKey(100);
-//     //开始获取图像对应的矩阵
-//     std::vector<std::vector<float>>res;
-//     std::vector<float>row;
-//     for(int i = 0 ; i < new_im.rows ; i++){
-//         for(int j = 0 ; j < new_im.cols ; j++){
-//             int px = static_cast<int>(new_im.at<uchar>(i , j));
-//             row.push_back((float)px/255);
-//         }
-//     }
-//     res.push_back(row);
-//     return Matrix<float>(res);
-// }
-
 template<typename T>
 void show(Matrix<T>& index){
     std::cout<<"\n";
@@ -92,25 +67,31 @@ void create_connect(std::shared_ptr<Base_Model> only){
     std::cout<<"pre_matrix_size:"<<pre_matrix_size<<std::endl;
     std::vector<float>vec(pre_matrix_size);
     recv(connect_fd , (char*)vec.data() , pre_matrix_size*sizeof(float) , 0);
-    std::cout << "Received vector from client: ";
-    for (float f : vec) {
-        std::cout << f << " ";
-    }
-    std::cout << "\n";
+    // std::cout << "从客户端接收到的函数: ";
+    // for (float f : vec) {
+    //     std::cout << f << " ";
+    // }
+    // std::cout << "\n";
     std::vector<std::vector<float>>mid;
     mid.push_back(vec);
     Matrix<float>pic(mid);
     //计算过后再发回去
-    /********************************************************************** */
+    /****************************************************************
+     * ****** */
+    auto start = std::chrono::high_resolution_clock::now();
     Matrix<float>res = only->forward(pic);
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+    std::cout<<"当前forward函数用时为:"<<duration.count()<<"ms\n";
+    
     std::cout<<"计算后的矩阵"<<res.line<<" "<<res.column<<"\n";
     show(res);
     std::vector<float>output = res.matrix[0];
     size_t bf_matrix_size = output.size();
-    std::cout<<"res.size:"<<bf_matrix_size<<std::endl;
+    //std::cout<<"res.size:"<<bf_matrix_size<<std::endl;
     send(connect_fd , (char*)&bf_matrix_size , sizeof(size_t) , 0);
     send(connect_fd , (char*)output.data() , bf_matrix_size*sizeof(float) , 0);
-    std::cout << "Sent processed vector back to client\n";
+    //std::cout << "将矩阵传回到客户端\n";
 
     closesocket(listen_client);
     closesocket(connect_fd);
@@ -119,9 +100,9 @@ void create_connect(std::shared_ptr<Base_Model> only){
 }
 
 int main(){
-    std::string folder;
-    std::cout<<"Pls enter the folder path:";
-    std::cin>>folder;
+    std::string folder = "D:/Test2025/mnist-fc";
+    // std::cout<<"Pls enter the folder path:";
+    // std::cin>>folder;
 
     nlohmann::json j;
     std::ifstream fin(folder+"/meta.json");
@@ -141,13 +122,4 @@ int main(){
         std::cout<<"Has no match type\n\n";
     }
     create_connect(only);
-    /*传入一个矩阵*/
-    // cv::Mat img_read;
-    // Matrix<float> img_matrix;
-    // std::string path;
-    // std::cout<<"Pls enter the path of img:";
-    // std::cin>>path;
-    // img_matrix = read_img(path , img_read);
-    // Matrix<float>push = only->forward(img_matrix);
-    //show(push);
 }

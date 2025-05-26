@@ -4,7 +4,7 @@
 template<class T>
 class Matrix{
  private:
-    //åˆ¤æ–­çŸ©é˜µa,bæ˜¯å¦å¯ä»¥æ»¡è¶³*this x other(å†…æ ‡ç›¸ç­‰æ‰å¯ç›¸ä¹˜)
+    //ÅĞ¶Ï¾ØÕóa,bÊÇ·ñ¿ÉÒÔÂú×ã*this x other(ÄÚ±êÏàµÈ²Å¿ÉÏà³Ë)
     bool is_multipy(const Matrix& other)const{
         int line_other = other.line , line_this = this->line;
         int column_other = other.column , column_this = this->column;
@@ -12,7 +12,7 @@ class Matrix{
         if(other.matrix.empty()&&this->matrix.empty()) return false;
         return true;
     }
-    //åˆ¤æ–­ä¸¤çŸ©é˜µæ˜¯å¦å¯ä»¥ç›¸åŠ 
+    //ÅĞ¶ÏÁ½¾ØÕóÊÇ·ñ¿ÉÒÔÏà¼Ó
     bool is_add(const Matrix& other)const{
         int line_other = other.line , line_this = this->line;
         int column_other = other.column , column_this = this->column;
@@ -31,7 +31,7 @@ class Matrix{
     Matrix(int a , int b):line(a) , column(b){
         matrix.resize(a , std::vector<T>(b,0));
     }
-    //ç±»å‹è½¬æ¢å‡½æ•°
+    //ÀàĞÍ×ª»»º¯Êı
     template<typename U>
     Matrix(const Matrix<U>& other) : line(other.line), column(other.column) {
         matrix.resize(line, std::vector<T>(column));
@@ -42,20 +42,45 @@ class Matrix{
         }
     }
 
-    //çŸ©é˜µç›¸ä¹˜å‡½æ•°
-    Matrix<T> operator*(const Matrix<T>& other)const
+    //¾ØÕóÏà³Ëº¯Êı
+    Matrix<T> Multipy(const Matrix<T>& other)const
     {
-        if(!is_multipy(other)) return *this;//ä¸¤çŸ©é˜µæ— æ³•ç›¸ä¹˜çš„æƒ…å†µ
+        std::mutex mtx;
+        unsigned int threads = std::thread::hardware_concurrency();
+        std::cout<<"CPUºËĞÄÊıÎª:"<<threads<<"\n";
+        if(!is_multipy(other)) return *this;//Á½¾ØÕóÎŞ·¨Ïà³ËµÄÇé¿ö
         int line_this = this->line;
-        int common = other.line;//æˆ–è€…æ˜¯this->column
+        int common = other.line;//»òÕßÊÇthis->column
         int column_other = other.column; 
-
-        //ä¸¤çŸ©é˜µå¤–æ ‡ä¸ºç›¸ä¹˜åç»“æœçŸ©é˜µçš„è¡Œåˆ—
+        //ÏòÉÏÈ¡ÕûºÃÒ»µã£¬±ÜÃâÂ©µô
+        int thread_num = (line_this + threads -1) / threads;//¼ÆËãÃ¿¸öÏß³ÌÓ¦¸Ã·Öµ½¶àÉÙĞĞ¾ØÕóÀ´¼ÆËã
+        std::cout<<"Ã¿¸öÏß³ÌÒª´¦ÀíµÄĞĞÊıÎª:"<<thread_num<<"\n";
+        std::cout<<"¾ØÕó×ÜĞĞÊıÎª:"<<line_this<<"\n";
+        //Á½¾ØÕóÍâ±êÎªÏà³Ëºó½á¹û¾ØÕóµÄĞĞÁĞ
+        std::vector<std::thread>work;
         std::vector<std::vector<T>> res(line_this , std::vector<T>(column_other,0));
-
-        for(auto i = 0; i < line_this ; i++){//æ§åˆ¶açš„è¡Œæ•°
-            for(auto j = 0;j < column_other ;j++){//æ§åˆ¶bçš„åˆ—æ•°
-                for(auto k = 0 ; k< common ; k++){//æ§åˆ¶açš„åˆ—æ•°/bçš„è¡Œæ•°
+        // for(int i = 0 ; i< threads ; i++){
+        //     int start = i*thread_num;
+        //     int end = std::min(start+thread_num , line_this);
+        //     std::cout<<"time:"<<i<<"start:"<<start<<"end:"<<end<<"\n\n";
+        //     work.emplace_back([&](){
+        //         for(auto m = start; m < end-1 ; m++){//¿ØÖÆaµÄĞĞÊı
+        //             for(auto j = 0;j < column_other ;j++){//¿ØÖÆbµÄÁĞÊı
+        //                 T sum = 0;
+        //                 for(auto k = 0 ; k< common ; k++){//¿ØÖÆaµÄÁĞÊı/bµÄĞĞÊı
+        //                     sum += this->matrix[m][k] * other.matrix[k][j];
+        //                 }
+        //                 res[m][j] = sum;
+        //             }
+        //         }
+        //     });
+        // }
+        // for(auto &th :work){
+        //     th.join();
+        // }
+        for(auto i = 0; i < line_this ; i++){//¿ØÖÆaµÄĞĞÊı
+            for(auto j = 0;j < column_other ;j++){//¿ØÖÆbµÄÁĞÊı
+                for(auto k = 0 ; k< common ; k++){//¿ØÖÆaµÄÁĞÊı/bµÄĞĞÊı
                     res[i][j] += this->matrix[i][k] * other.matrix[k][j];
                 }
             }
@@ -63,8 +88,8 @@ class Matrix{
         return Matrix(res);
     }   
 
-    // //çŸ©é˜µç›¸åŠ å‡½æ•°
-    Matrix<T> operator+(const Matrix<T>& other)const
+    // //¾ØÕóÏà¼Óº¯Êı
+    Matrix<T> add(const Matrix<T>& other)const
     {
         if(!is_add(other)) return other;
         int line = other.line;
