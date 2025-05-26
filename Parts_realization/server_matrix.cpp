@@ -121,5 +121,8 @@ int main(){
     else{
         std::cout<<"Has no match type\n\n";
     }
-    create_connect(only);
+    while(1){
+        create_connect(only);
+    }
+    
 }

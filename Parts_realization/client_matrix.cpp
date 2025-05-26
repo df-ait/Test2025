@@ -101,11 +101,13 @@ void create_socket(Matrix<float>& tranfer){
 
 
 int main(){
-    cv::Mat img_read;
+    while (1)
+    {
+        cv::Mat img_read;
     Matrix<float> img_matrix;
-    std::string path = "D:/Test2025/nums/0.png";
-    // std::cout<<"Pls enter the path of img:";
-    // std::cin>>path;
+    std::string path;
+    std::cout<<"Pls enter the path of img:";
+    std::cin>>path;
     /**
      动态的读取窗口上的鼠标轨迹，然后每次都传入read_img中
      */
@@ -115,6 +117,9 @@ int main(){
     // std::cout<<"要传入的矩阵:\n";
     // show(img_matrix);
     create_socket(img_matrix);
+    
+    }
+    
     
     return 0;
 }
