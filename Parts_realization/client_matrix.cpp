@@ -99,7 +99,6 @@ void create_socket(Matrix<float>& tranfer){
     return;
 }
 
-
 int main(){
     while (1)
     {
