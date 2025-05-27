@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Test_client.dir/client_matrix.cpp.obj"
-  "CMakeFiles/Test_client.dir/client_matrix.cpp.obj.d"
+  "CMakeFiles/Test_client.dir/D_/Test2025/hello.cpp.obj"
+  "CMakeFiles/Test_client.dir/D_/Test2025/hello.cpp.obj.d"
   "Test_client.exe"
   "Test_client.exe.manifest"
   "Test_client.pdb"
