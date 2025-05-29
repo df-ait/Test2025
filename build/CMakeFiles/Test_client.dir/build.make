@@ -68,29 +68,29 @@ include CMakeFiles/Test_client.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Test_client.dir/flags.make
 
-CMakeFiles/Test_client.dir/D_/Test2025/hello.cpp.obj: CMakeFiles/Test_client.dir/flags.make
-CMakeFiles/Test_client.dir/D_/Test2025/hello.cpp.obj: CMakeFiles/Test_client.dir/includes_CXX.rsp
-CMakeFiles/Test_client.dir/D_/Test2025/hello.cpp.obj: D:/Test2025/hello.cpp
-CMakeFiles/Test_client.dir/D_/Test2025/hello.cpp.obj: CMakeFiles/Test_client.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Test2025\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Test_client.dir/D_/Test2025/hello.cpp.obj"
-	D:\ddddffff\Mingw14.2.0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Test_client.dir/D_/Test2025/hello.cpp.obj -MF CMakeFiles\Test_client.dir\D_\Test2025\hello.cpp.obj.d -o CMakeFiles\Test_client.dir\D_\Test2025\hello.cpp.obj -c D:\Test2025\hello.cpp
+CMakeFiles/Test_client.dir/client_matrix.cpp.obj: CMakeFiles/Test_client.dir/flags.make
+CMakeFiles/Test_client.dir/client_matrix.cpp.obj: CMakeFiles/Test_client.dir/includes_CXX.rsp
+CMakeFiles/Test_client.dir/client_matrix.cpp.obj: D:/Test2025/Parts_realization/client_matrix.cpp
+CMakeFiles/Test_client.dir/client_matrix.cpp.obj: CMakeFiles/Test_client.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Test2025\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Test_client.dir/client_matrix.cpp.obj"
+	D:\ddddffff\Mingw14.2.0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Test_client.dir/client_matrix.cpp.obj -MF CMakeFiles\Test_client.dir\client_matrix.cpp.obj.d -o CMakeFiles\Test_client.dir\client_matrix.cpp.obj -c D:\Test2025\Parts_realization\client_matrix.cpp
 
-CMakeFiles/Test_client.dir/D_/Test2025/hello.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Test_client.dir/D_/Test2025/hello.cpp.i"
-	D:\ddddffff\Mingw14.2.0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Test2025\hello.cpp > CMakeFiles\Test_client.dir\D_\Test2025\hello.cpp.i
+CMakeFiles/Test_client.dir/client_matrix.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Test_client.dir/client_matrix.cpp.i"
+	D:\ddddffff\Mingw14.2.0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Test2025\Parts_realization\client_matrix.cpp > CMakeFiles\Test_client.dir\client_matrix.cpp.i
 
-CMakeFiles/Test_client.dir/D_/Test2025/hello.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Test_client.dir/D_/Test2025/hello.cpp.s"
-	D:\ddddffff\Mingw14.2.0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Test2025\hello.cpp -o CMakeFiles\Test_client.dir\D_\Test2025\hello.cpp.s
+CMakeFiles/Test_client.dir/client_matrix.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Test_client.dir/client_matrix.cpp.s"
+	D:\ddddffff\Mingw14.2.0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Test2025\Parts_realization\client_matrix.cpp -o CMakeFiles\Test_client.dir\client_matrix.cpp.s
 
 # Object files for target Test_client
 Test_client_OBJECTS = \
-"CMakeFiles/Test_client.dir/D_/Test2025/hello.cpp.obj"
+"CMakeFiles/Test_client.dir/client_matrix.cpp.obj"
 
 # External object files for target Test_client
 Test_client_EXTERNAL_OBJECTS =
 
-Test_client.exe: CMakeFiles/Test_client.dir/D_/Test2025/hello.cpp.obj
+Test_client.exe: CMakeFiles/Test_client.dir/client_matrix.cpp.obj
 Test_client.exe: CMakeFiles/Test_client.dir/build.make
 Test_client.exe: D:/ddddffff/opencv/build/x64/MinGW/lib/libopencv_world455.dll.a
 Test_client.exe: D:/ddddffff/opencv/build/x64/MinGW/lib/libopencv_world455.dll.a

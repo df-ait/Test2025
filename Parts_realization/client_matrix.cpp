@@ -1,11 +1,18 @@
-#include <bits/stdc++.h>
-#include <winsock2.h>
-#include <opencv2\highgui\highgui.hpp>
-#include <opencv2\opencv.hpp>
-#include <ws2tcpip.h>
-#include "head/Matrix.h"
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/highgui/highgui_c.h>
+#include <opencv2/core.hpp>
+#include <opencv2/opencv.hpp>
 #include "head/Model.h"
+#include "head/Matrix.h"
+#include <bits/stdc++.h>
+#include <ws2tcpip.h>
 #pragma comment(lib , "ws2_32.lib")
+
+//å…¨å±€å˜é‡ ç»˜ç”»ç”»å¸ƒï¼Œç»˜ç”»çŠ¶æ€ï¼Œä¸Šä¸€ä¸ªç‚¹çš„åæ ‡, çª—å£åå­—
+cv::Mat cavan;
+bool is_draw = false ,is_running = true;
+cv::Point prePoint(-1 , -1);
+std::string windowsname = "img";
 
 template<typename T>
 void show(Matrix<T>& index){
@@ -16,45 +23,79 @@ void show(Matrix<T>& index){
             }
             std::cout<<"\n";
       }
-      std::cout<<"\n\n";
-   }
+    std::cout<<"\n\n";
+}
 
-Matrix<float> read_img(const std::string path , cv::Mat target){
-    target = cv::imread(path , cv::IMREAD_GRAYSCALE);
-    if(target.empty()){
-        std::cout<<"¼ÓÔØÍ¼Æ¬Ê§°Ü:"<<path<<"\n\n";
-        return Matrix<float>(0,0);
-    }
-    cv::Mat new_im;
-    cv::resize(target , new_im ,cv::Size(28,28) , 0 , 0 , cv::INTER_AREA);
-    cv::imshow("output" , new_im);
-    cv::waitKey(100);
-    //¿ªÊ¼»ñÈ¡Í¼Ïñ¶ÔÓ¦µÄ¾ØÕó
-    std::vector<std::vector<float>>res;
-    std::vector<float>row;
-    for(int i = 0 ; i < new_im.rows ; i++){
-        for(int j = 0 ; j < new_im.cols ; j++){
-            int px = static_cast<int>(new_im.at<uchar>(i , j));
-            row.push_back((float)px/255);
+void draw(int event ,int x ,int y ,int flags ,void* prama);
+void create_socket(Matrix<float>& tranfer);
+void process_img();
+
+int main(){
+    //è¦æœ‰ä¸€ä¸ªå¾ªç¯ä¸æ–­åœ°æ›´æ–°ç”»å¸ƒæƒ…å†µï¼Œæ‰èƒ½çœ‹å‡ºæ¥å›¾åƒå˜åŒ–
+    cv::namedWindow(windowsname);
+    //åˆ›å»ºä¸€ä¸ªç©ºç™½ç”»å¸ƒ
+    cavan = cv::Mat(500 , 500 , CV_8UC3 , cv::Scalar(255 ,255 ,255));
+    static std::string text = "Prediction:";
+    cv::putText(cavan , text , cv::Point(25 , 25) , CV_FONT_HERSHEY_SIMPLEX , 1, cv::Scalar(0 , 255 , 0) , 2);
+    cv::putText(cavan , "Press 'c' to clear" , cv::Point(25 , 465) , CV_FONT_HERSHEY_SIMPLEX , 1, cv::Scalar(0 , 255 , 0) , 2);
+    cv::putText(cavan , "Press 'a' to commit" , cv::Point(25 , 485) , CV_FONT_HERSHEY_SIMPLEX , 1, cv::Scalar(0 , 255 , 0) , 2);
+    cv::setMouseCallback(windowsname , draw , &cavan);
+    //std::thread process = std::thread(process_img);
+    while (1)
+    {
+        auto key = cv::waitKey(10);
+        if(key == 27) {
+            is_running = false;
+            break;//æŒ‰ä¸‹Escé”®å°±é€€å‡º
         }
+        if(key == 'c'||key == 'C'){
+            cavan = cv::Mat(500 , 500 , CV_8UC3 , cv::Scalar(255 ,255 ,255));
+            text = "Prediction:";
+            cv::putText(cavan , text , cv::Point(25 , 25) , CV_FONT_HERSHEY_SIMPLEX , 1, cv::Scalar(0 , 255 , 0) , 2);
+            cv::putText(cavan , "Press 'c' to clear" , cv::Point(25 , 465) , CV_FONT_HERSHEY_SIMPLEX , 1, cv::Scalar(0 , 255 , 0) , 2);
+            cv::putText(cavan , "Press 'a' to commit" , cv::Point(25 , 485) , CV_FONT_HERSHEY_SIMPLEX , 1, cv::Scalar(0 , 255 , 0) , 2);
+        }       
+        if(key == 'a'||key == 'A'){
+            process_img();
+        }
+        // process_img();
+        // std::thread(process_img).detach();
+        cv::imshow(windowsname , cavan);
     }
-     res.push_back(row);
-    // Matrix<float>res_(res);
-    // show(res_);
-    // std::cout<<res_.line<<" "<<res_.column<<"\n";
-    return Matrix<float>(res);
+    //process.join();
+    cv::destroyAllWindows();
+    return 0;
+}
+
+void draw(int event ,int x ,int y ,int flags ,void* prama){
+    if(event == cv::EVENT_LBUTTONDOWN){
+        //é¼ æ ‡å·¦é”®æŒ‰ä¸‹æ—¶
+        is_draw = true;
+        prePoint = cv::Point(x , y);//å‚¨å­˜ç¬¬ä¸€ä¸ªç‚¹
+    }
+    else if(event == cv::EVENT_MOUSEMOVE && is_draw){
+        //å½“é¼ æ ‡ç§»åŠ¨å¹¶ä¸”å±äºç»˜ç”»çŠ¶æ€
+        //å’Œå‰ä¸€ä¸ªç‚¹è¿èµ·æ¥ç”»æˆç›´çº¿
+        cv::line(cavan , prePoint , cv::Point(x , y) , cv::Scalar(0 , 0 , 0) , 50 , cv::LINE_AA);
+        prePoint = cv::Point(x , y);
+    }else if(event == cv::EVENT_LBUTTONUP){
+        //å½“å·¦é”®èµ·æ¥çš„æ—¶å€™ï¼Œç»˜ç”»ç»“æŸï¼Œè¦å¤„ç†æœ€åä¸€ä¸ªç‚¹
+        cv::line(cavan , prePoint , cv::Point(x , y) , cv::Scalar(0 , 0 , 0) , 50 , cv::LINE_AA);
+        prePoint = cv::Point(-1 ,-1);
+        is_draw = false;
+    }
 }
 
 void create_socket(Matrix<float>& tranfer){
     WSAData net;
     if(WSAStartup(MAKEWORD(2,2) , &net) != 0){
-        std::cerr<<"client:¼ÓÔØÌ×½Ó×Ö¿âÊ§°Ü\n\n";
+        std::cerr<<"client:åŠ è½½å¥—æ¥å­—åº“å¤±è´¥\n\n";
         WSACleanup();
         return;
     }
     SOCKET se_matrix = socket(AF_INET , SOCK_STREAM , 0);
     if(se_matrix == INVALID_SOCKET){
-        std::cerr<<"client:´´½¨Ì×½Ó×ÖÊ§°Ü\n\n";
+        std::cerr<<"client:åˆ›å»ºå¥—æ¥å­—å¤±è´¥\n\n";
         WSACleanup();
         return;
     }
@@ -64,61 +105,59 @@ void create_socket(Matrix<float>& tranfer){
     inet_pton(AF_INET, "127.0.0.1", &cit_matrix_addr.sin_addr);
     // SOCKET connect_fd = connect(se_matrix , (sockaddr*)&cit_matrix_addr , sizeof(cit_matrix_addr));
     if(connect(se_matrix , (sockaddr*)&cit_matrix_addr , sizeof(cit_matrix_addr)) == SOCKET_ERROR){
-            std::cerr<<"client:¿Í»§¶ËÇëÇóÁ¬½ÓÊ§°Ü\n\n";
+            std::cerr<<"client:å®¢æˆ·ç«¯è¯·æ±‚è¿æ¥å¤±è´¥\n\n";
             closesocket(se_matrix);
             WSACleanup();
             return;
     } 
-    std::cout<<"client:³É¹¦Á¬½Óµ½·şÎñÆ÷¶Ë\n";
+    std::cout<<"client:æˆåŠŸè¿æ¥åˆ°æœåŠ¡å™¨ç«¯\n";
     std::vector<float>befor_cal =  tranfer.matrix[0];
-    // std::cout << "Òª´«ÈëÖ®Ç°µÄ¾ØÕó: ";
-    // for (float f : befor_cal) {
-    //     std::cout << f << " ";
-    // }
-    // std::cout << "\n";
-    //ÏÈ´«Èë¾ØÕó´óĞ¡
     size_t tranfer_m_size = befor_cal.size();
 
     send(se_matrix, (char*)&tranfer_m_size, sizeof(size_t), 0);
-    //ÔÙ°Ñ¾ØÕóµÄÊı¾İ´«½øÈ¥
+    //å†æŠŠçŸ©é˜µçš„æ•°æ®ä¼ è¿›å»
     send(se_matrix , (char*)befor_cal.data() , sizeof(float)*tranfer_m_size , 0);
-    //Í¬ÑùµÄÏÈ½ÓÊÕ¾ØÕó´óĞ¡£¬ÔÙ½ÓÊÕÔªËØ
+    //åŒæ ·çš„å…ˆæ¥æ”¶çŸ©é˜µå¤§å°ï¼Œå†æ¥æ”¶å…ƒç´ 
     size_t beforcal_size;
     recv(se_matrix , (char*)&beforcal_size ,sizeof(size_t) , 0);
     std::vector<float>after(beforcal_size);
     recv(se_matrix , (char*)after.data() , sizeof(float)*beforcal_size , 0);
-   
-    std::cout << "Í¨¹ıforward¼ÆËãºó·µ»ØµÄ¾ØÕó: ";
-    for (float f : after) {
-        std::cout << f << " ";
-    }
-    std::cout << "\n";
-
+    // std::cout << "é€šè¿‡forwardè®¡ç®—åè¿”å›çš„çŸ©é˜µ: ";
+    // for (float f : after) {
+    //     std::cout << f << " ";
+    // }
+    // std::cout << "\n";
+    auto max_it = std::max_element(after.begin() , after.end());
+    auto max_index = std::distance(after.begin() , max_it);
+    std::string text = "Prediction:" + std::to_string(max_index);
+    std::cout<<text<<"\n";
+    cv::putText(cavan , text , cv::Point(25 , 25) , CV_FONT_HERSHEY_SIMPLEX , 1, cv::Scalar(0 , 255 , 0) , 2);
     closesocket(se_matrix);
     WSACleanup();
     return;
 }
 
-int main(){
-    while (1)
-    {
-        cv::Mat img_read;
-    Matrix<float> img_matrix;
-    std::string path;
-    std::cout<<"Pls enter the path of img:";
-    std::cin>>path;
-    /**
-     ¶¯Ì¬µÄ¶ÁÈ¡´°¿ÚÉÏµÄÊó±ê¹ì¼££¬È»ºóÃ¿´Î¶¼´«Èëread_imgÖĞ
-     */
-    img_matrix = read_img(path , img_read);
-    //´«ÈëforwardÖĞ¼ÆËã
-    //ÏÈ½¨Á¢Í¨ĞÅ
-    // std::cout<<"Òª´«ÈëµÄ¾ØÕó:\n";
-    // show(img_matrix);
-    create_socket(img_matrix);
-    
+void process_img(){
+    //std::lock_guard<std::mutex> lock(mtx);
+    //std::lock_guard<std::mutex> lock(mtx);
+    cv::Mat img = cavan.clone();
+    cv::Mat img_gray;
+    //å…ˆè¯»å–æˆç°åº¦å›¾ï¼Œå†è¿›è¡Œç¼©å°å›¾ç‰‡
+    cvtColor(img , img_gray , cv::COLOR_BGR2GRAY);
+    cv::Mat img_gray_s;
+    cv::resize(img_gray , img_gray_s , cv::Size(28 ,28) , 0 , 0 ,cv::INTER_AREA);
+    std::vector<std::vector<float>>res;
+    std::vector<float>rows;
+    for(int i = 0 ; i < img_gray_s.rows ; i++){
+        for(int j = 0 ; j < img_gray_s.cols ; j++){
+            int px = static_cast<int>(img_gray_s.at<uchar>(i , j));
+            rows.push_back((float)px/255);
+        }
     }
-    
-    
-    return 0;
+    res.push_back(rows);
+    std::cout<<"çŸ©é˜µå…ƒç´ ä¸ªæ•°:"<<rows.size()<<"\n";
+    //return Matrix<float>(res);
+    Matrix<float>tranfer(res);
+    create_socket(tranfer);
+    //std::this_thread::sleep_for(std::chrono::milliseconds(2000));
 }

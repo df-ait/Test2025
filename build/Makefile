@@ -141,29 +141,29 @@ Test_client/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test_client.dir\build.make CMakeFiles/Test_client.dir/build
 .PHONY : Test_client/fast
 
-D_/Test2025/hello.obj: D_/Test2025/hello.cpp.obj
-.PHONY : D_/Test2025/hello.obj
+client_matrix.obj: client_matrix.cpp.obj
+.PHONY : client_matrix.obj
 
 # target to build an object file
-D_/Test2025/hello.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test_client.dir\build.make CMakeFiles/Test_client.dir/D_/Test2025/hello.cpp.obj
-.PHONY : D_/Test2025/hello.cpp.obj
+client_matrix.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test_client.dir\build.make CMakeFiles/Test_client.dir/client_matrix.cpp.obj
+.PHONY : client_matrix.cpp.obj
 
-D_/Test2025/hello.i: D_/Test2025/hello.cpp.i
-.PHONY : D_/Test2025/hello.i
+client_matrix.i: client_matrix.cpp.i
+.PHONY : client_matrix.i
 
 # target to preprocess a source file
-D_/Test2025/hello.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test_client.dir\build.make CMakeFiles/Test_client.dir/D_/Test2025/hello.cpp.i
-.PHONY : D_/Test2025/hello.cpp.i
+client_matrix.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test_client.dir\build.make CMakeFiles/Test_client.dir/client_matrix.cpp.i
+.PHONY : client_matrix.cpp.i
 
-D_/Test2025/hello.s: D_/Test2025/hello.cpp.s
-.PHONY : D_/Test2025/hello.s
+client_matrix.s: client_matrix.cpp.s
+.PHONY : client_matrix.s
 
 # target to generate assembly for a file
-D_/Test2025/hello.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test_client.dir\build.make CMakeFiles/Test_client.dir/D_/Test2025/hello.cpp.s
-.PHONY : D_/Test2025/hello.cpp.s
+client_matrix.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Test_client.dir\build.make CMakeFiles/Test_client.dir/client_matrix.cpp.s
+.PHONY : client_matrix.cpp.s
 
 server_matrix.obj: server_matrix.cpp.obj
 .PHONY : server_matrix.obj
@@ -199,9 +199,9 @@ help:
 	@echo ... rebuild_cache
 	@echo ... Test_client
 	@echo ... Test_server
-	@echo ... D_/Test2025/hello.obj
-	@echo ... D_/Test2025/hello.i
-	@echo ... D_/Test2025/hello.s
+	@echo ... client_matrix.obj
+	@echo ... client_matrix.i
+	@echo ... client_matrix.s
 	@echo ... server_matrix.obj
 	@echo ... server_matrix.i
 	@echo ... server_matrix.s

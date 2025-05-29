@@ -6,7 +6,7 @@
 },
 {
   "directory": "D:/Test2025/build",
-  "command": "D:\\ddddffff\\Mingw14.2.0\\mingw64\\bin\\g++.exe  @CMakeFiles/Test_client.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Test_client.dir\\D_\\Test2025\\hello.cpp.obj -c D:\\Test2025\\hello.cpp",
-  "file": "D:/Test2025/hello.cpp"
+  "command": "D:\\ddddffff\\Mingw14.2.0\\mingw64\\bin\\g++.exe  @CMakeFiles/Test_client.dir/includes_CXX.rsp -g -std=gnu++20 -o CMakeFiles\\Test_client.dir\\client_matrix.cpp.obj -c D:\\Test2025\\Parts_realization\\client_matrix.cpp",
+  "file": "D:/Test2025/Parts_realization/client_matrix.cpp"
 }
 ]

@@ -38,6 +38,7 @@ int main(){
     static std::string text = "Prediction:";
     cv::putText(cavan , text , cv::Point(25 , 25) , CV_FONT_HERSHEY_SIMPLEX , 1, cv::Scalar(0 , 255 , 0) , 2);
     cv::putText(cavan , "Press 'c' to clear" , cv::Point(25 , 465) , CV_FONT_HERSHEY_SIMPLEX , 1, cv::Scalar(0 , 255 , 0) , 2);
+    cv::putText(cavan , "Press 'a' to commit" , cv::Point(25 , 485) , CV_FONT_HERSHEY_SIMPLEX , 1, cv::Scalar(0 , 255 , 0) , 2);
     cv::setMouseCallback(windowsname , draw , &cavan);
     //std::thread process = std::thread(process_img);
     while (1)
@@ -52,12 +53,13 @@ int main(){
             text = "Prediction:";
             cv::putText(cavan , text , cv::Point(25 , 25) , CV_FONT_HERSHEY_SIMPLEX , 1, cv::Scalar(0 , 255 , 0) , 2);
             cv::putText(cavan , "Press 'c' to clear" , cv::Point(25 , 465) , CV_FONT_HERSHEY_SIMPLEX , 1, cv::Scalar(0 , 255 , 0) , 2);
+            cv::putText(cavan , "Press 'a' to commit" , cv::Point(25 , 485) , CV_FONT_HERSHEY_SIMPLEX , 1, cv::Scalar(0 , 255 , 0) , 2);
         }       
-        // if(key == 'a'||key == 'A'){
-        //     process_img();
-        // }
-        //process_img();
-        std::thread(process_img).detach();
+        if(key == 'a'||key == 'A'){
+            process_img();
+        }
+        // process_img();
+        // std::thread(process_img).detach();
         cv::imshow(windowsname , cavan);
     }
     //process.join();
